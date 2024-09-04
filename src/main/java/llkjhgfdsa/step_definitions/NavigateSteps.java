@@ -1,10 +1,8 @@
 package llkjhgfdsa.step_definitions;
 
 import io.cucumber.java.AfterAll;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.sk.A;
 import llkjhgfdsa.DriverContainer;
 import llkjhgfdsa.URL;
 import org.junit.Assert;
