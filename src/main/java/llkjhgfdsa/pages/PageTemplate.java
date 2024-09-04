@@ -5,19 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
-    WebDriver driver;
+public class PageTemplate {
+    protected WebDriver driver;
 
-    @FindBy(xpath = "//a[contains(text(), 'Sign up now')]")
-    WebElement signUpBtn;
-
-    public BasePage(WebDriver driver) {
+    public PageTemplate(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public void goToSignUp(){
-        signUpBtn.click();
     }
 
 }
