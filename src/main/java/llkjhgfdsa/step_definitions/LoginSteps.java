@@ -22,8 +22,20 @@ public class LoginSteps {
     public void enterInvalidCredentials() {
         DriverContainer.createLoginPage().login("invalidUsername", "invalidPassword");
     }
-    @Then("The page stays on login page")
-    public void pageStaysOnLoginPage() {
+
+    @When("The user leaves username or password field empty")
+    public void leaveUsernameOrPasswordFieldEmpty() {
+        DriverContainer.createLoginPage().login("", "");
+    }
+
+    @Then("The site puts cursor in first empty input field")
+    public void cursorInFirstEmptyInputField() {
+        String message = "When the user leaves empty an input field and try to submit, the site throw the cursor into the first empty input field.";
+        Assert.assertTrue(message, DriverContainer.createLoginPage().isFieldInFocus("username"));
+    }
+
+    @Then("The page shows a popup")
+    public void pageShowsPopup() {
         Assert.assertTrue("An alert should pop up when user tries to log in with invalid credentials.", DriverContainer.isAlertPresent());
     }
 
