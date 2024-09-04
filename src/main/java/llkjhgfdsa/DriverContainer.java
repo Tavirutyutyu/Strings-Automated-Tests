@@ -2,6 +2,7 @@ package llkjhgfdsa;
 
 import llkjhgfdsa.pages.LoginPage;
 import org.openqa.selenium.By;
+import llkjhgfdsa.pages.SignupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
