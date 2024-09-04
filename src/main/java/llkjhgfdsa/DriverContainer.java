@@ -1,7 +1,10 @@
 package llkjhgfdsa;
 
+import llkjhgfdsa.pages.LoginPage;
+import org.openqa.selenium.By;
 import llkjhgfdsa.pages.SignupPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
@@ -16,7 +19,7 @@ public class DriverContainer {
     private static final Duration EXTRA_LAG = Duration.ofSeconds(0);
 
     private static WebDriver driver;
-    //private static WebDriverWait wait;
+   // private static WebDriverWait wait;
 
     private static ChromeDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
@@ -82,7 +85,17 @@ public class DriverContainer {
         return getInstance().getCurrentUrl();
     }
 
-    public static SignupPage createLoginPage() {
-        return new SignupPage(getInstance());
+    public static LoginPage createLoginPage() {
+        return new LoginPage(getInstance());
+    }
+    public static boolean isAlertPresent() {
+        try{
+            WebElement alertPopup = getInstance().findElement(By.xpath("//*[@role='alert']"));
+            String alertText = alertPopup.getText();
+            System.out.println("Alert found: "+alertText);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 }
