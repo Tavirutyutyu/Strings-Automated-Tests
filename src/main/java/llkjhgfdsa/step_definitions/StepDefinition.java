@@ -1,10 +1,11 @@
+
 package llkjhgfdsa.step_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import llkjhgfdsa.pages.SignupPage;
+import llkjhgfdsa.pages.LoginPage;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,8 +32,7 @@ public class StepDefinition {
 
     @When("We click signup button")
     public void we_click_signup_button() {
-        SignupPage signupPage = new SignupPage(driver);
-        signupPage.goToSignUp();
+        LoginPage signupPage = new LoginPage(driver);
 
     }
 
