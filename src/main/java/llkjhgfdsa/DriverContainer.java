@@ -1,5 +1,6 @@
 package llkjhgfdsa;
 
+import llkjhgfdsa.pages.LoginPage;
 import llkjhgfdsa.pages.SignupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -82,7 +83,11 @@ public class DriverContainer {
         return getInstance().getCurrentUrl();
     }
 
-    public static SignupPage createLoginPage() {
+    public static LoginPage createLoginPage() {
+        return new LoginPage(getInstance());
+    }
+
+    public static SignupPage createSignupPage() {
         return new SignupPage(getInstance());
     }
 }

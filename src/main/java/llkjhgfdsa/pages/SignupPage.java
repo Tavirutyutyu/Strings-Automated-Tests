@@ -3,10 +3,8 @@ package llkjhgfdsa.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class SignupPage {
-    WebDriver driver;
+public class SignupPage extends PageTemplate {
 
     @FindBy(id = "firstName")
     private WebElement firstName;
@@ -23,9 +21,22 @@ public class SignupPage {
     @FindBy(id = "password")
     private WebElement password;
 
-    public SignupPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    @FindBy(className = "formBtn")
+    private WebElement submit;
 
+    public SignupPage(WebDriver driver) {
+        super(driver);
     }
+
+    public void signUp(String firstName, String lastName, String email, String username, String password) {
+        this.firstName.sendKeys(firstName);
+        this.lastName.sendKeys(lastName);
+        this.email.sendKeys(email);
+        this.username.sendKeys(username);
+        this.password.sendKeys(password);
+        this.submit.click();
+    }
+
+
+
 }
