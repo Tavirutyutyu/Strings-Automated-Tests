@@ -1,11 +1,14 @@
 package llkjhgfdsa.step_definitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import llkjhgfdsa.DriverContainer;
 import llkjhgfdsa.URL;
 import org.junit.Assert;
+
+import java.util.Map;
 
 public class LoginSteps {
     @When("We click signup button")
@@ -14,13 +17,20 @@ public class LoginSteps {
     }
 
     @When("The user enters valid credentials")
-    public void enterValidCredentials() {
-        DriverContainer.createLoginPage().login("asd", "12345");
+    public void enterValidCredentials(DataTable dataTable) {
+
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        String username = data.get("username");
+        String password = data.get("password");
+        DriverContainer.createLoginPage().login(username, password);
     }
 
     @When("The user enters invalid credentials")
-    public void enterInvalidCredentials() {
-        DriverContainer.createLoginPage().login("invalidUsername", "invalidPassword");
+    public void enterInvalidCredentials(DataTable dataTable) {
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        String username = data.get("username");
+        String password = data.get("password");
+        DriverContainer.createLoginPage().login(username, password);
     }
 
     @When("The user leaves username or password field empty")
