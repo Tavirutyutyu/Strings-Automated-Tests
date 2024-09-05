@@ -5,7 +5,7 @@ import llkjhgfdsa.StateContainer;
 import llkjhgfdsa.URL;
 
 public class CredentialSteps {
-    @Given("We are logged in with {string} \\/ {string} credentials")
+    @Given("We are logged in with {string} : {string} credentials")
     public void loginAs(String username, String password) {
         StateContainer.get(URL.LOGIN.getUrl());
         StateContainer.getLoginPage().login(username, password);

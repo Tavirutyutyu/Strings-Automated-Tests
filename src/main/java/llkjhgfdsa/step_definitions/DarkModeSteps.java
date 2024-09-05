@@ -25,4 +25,9 @@ public class DarkModeSteps {
     public void verifyDarkMode() {
         Assert.assertTrue(StateContainer.getMainPage().isDark());
     }
+
+    @Then("Page changes to light mode")
+    public void verifyLightMode() {
+        Assert.assertFalse(StateContainer.getMainPage().isDark());
+    }
 }
