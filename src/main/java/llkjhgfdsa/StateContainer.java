@@ -114,4 +114,9 @@ public class StateContainer {
             return false;
         }
     }
+
+    public static void refreshPage() {
+        if (driver == null) throw new RuntimeException("Driver not initialized");
+        driver.navigate().refresh();
+    }
 }
