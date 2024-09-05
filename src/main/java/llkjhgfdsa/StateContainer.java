@@ -1,9 +1,11 @@
 package llkjhgfdsa;
 
+import llkjhgfdsa.pages.LoginPage;
 import llkjhgfdsa.pages.MainPage;
-import llkjhgfdsa.pages.PageTemplate;
 import llkjhgfdsa.pages.SignupPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
@@ -21,6 +23,7 @@ public class StateContainer {
 
     private static MainPage mainPage;
     private static SignupPage signupPage;
+    private static LoginPage loginPage;
 
     private static ChromeDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
@@ -35,7 +38,7 @@ public class StateContainer {
         return driver;
     }
 
-    private static WebDriver getInstance() {
+    public static WebDriver getDriver() {
         if (driver == null) {
             driver = createChromeDriver();
         }
@@ -44,7 +47,7 @@ public class StateContainer {
 
     private static WebDriverWait getWait() {
         if (wait == null) {
-            wait = new WebDriverWait(getInstance(), WAIT_DURATION);
+            wait = new WebDriverWait(getDriver(), WAIT_DURATION);
         }
         return wait;
     }
@@ -56,6 +59,7 @@ public class StateContainer {
         wait = null;
         mainPage = null;
         signupPage = null;
+        loginPage = null;
     }
 
     public static void waitForUrl(String url) {
@@ -64,24 +68,43 @@ public class StateContainer {
     }
 
     public static void get(String url) {
-        getInstance().get(url);
+        getDriver().get(url);
     }
 
     public static String getCurrentUrl() {
-        return getInstance().getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
     public static MainPage getMainPage() {
         if (mainPage == null) {
-            mainPage = new MainPage(getInstance());
+            mainPage = new MainPage(getDriver(), getWait());
         }
         return mainPage;
     }
 
     public static SignupPage getSignupPage() {
         if (signupPage == null) {
-            signupPage = new SignupPage(getInstance());
+            signupPage = new SignupPage(getDriver(), getWait());
         }
         return signupPage;
+    }
+
+    public static LoginPage getLoginPage() {
+        if (loginPage == null) {
+            loginPage = new LoginPage(getDriver(), getWait());
+        }
+        return loginPage;
+    }
+
+
+    public static boolean isAlertPresent() {
+        try{
+            WebElement alertPopup = getDriver().findElement(By.xpath("//*[@role='alert']"));
+            String alertText = alertPopup.getText();
+            System.out.println("Alert found: "+alertText);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 }

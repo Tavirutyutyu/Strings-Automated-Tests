@@ -3,16 +3,17 @@ package llkjhgfdsa.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends PageTemplate implements DarkModePage{
-    @FindBy(className = ".App")
+    @FindBy(className = "App")
     private WebElement AppDiv;
 
-    @FindBy(css = ".darkLightBtn")
+    @FindBy(className = "darkLightBtn")
     private WebElement darkLightButton;
 
-    public MainPage(WebDriver driver) {
-        super(driver);
+    public MainPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
     @Override
     public boolean isDark() {

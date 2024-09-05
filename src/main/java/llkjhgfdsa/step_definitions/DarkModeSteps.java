@@ -1,9 +1,10 @@
 package llkjhgfdsa.step_definitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import llkjhgfdsa.StateContainer;
-import llkjhgfdsa.pages.DarkModePage;
+import org.junit.Assert;
 
 public class DarkModeSteps {
     @Given("We are in dark mode")
@@ -18,5 +19,10 @@ public class DarkModeSteps {
     @When("We click dark mode button")
     public void clickDarkMode() {
         StateContainer.getMainPage().clickDarkModeButton();
+    }
+
+    @Then("Page changes to dark mode")
+    public void verifyDarkMode() {
+        Assert.assertTrue(StateContainer.getMainPage().isDark());
     }
 }
