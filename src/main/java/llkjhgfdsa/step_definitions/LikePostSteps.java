@@ -18,14 +18,15 @@ public class LikePostSteps {
         StateContainer.getPostCreationPage().makePost(post);
         StateContainer.getMainPage().likePost(post);
     }
-    @When("The user likes an unliked post {string}")
+    @When("The user double clicks on picture {string}")
+    public void the_user_likes_an_unliked_picture_post(String post) {
+        StateContainer.getMainPage().likePicturePost(post);
+    }
+    @When("The user clicks on heart on {string}")
     public void the_user_likes_an_unliked_post(String post) {
         StateContainer.getMainPage().likePost(post);
     }
-    @When("The user unlikes a liked post {string}")
-    public void the_user_unlikes_a_liked_post(String post) {
-        StateContainer.getMainPage().likePost(post);
-    }
+
     @Then("The hearth icon becomes red at post {string}")
     public void the_hearth_icon_becomes_red(String post) {
         Assert.assertTrue(StateContainer.getMainPage().isPostLiked(post));
