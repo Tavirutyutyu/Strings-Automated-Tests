@@ -23,3 +23,18 @@ Feature: signup
     Given user is on the sign up page no fields filled
     When user presses signup button
     Then user not forwarded to login page
+
+  Scenario: user signs up with same credentials
+    Given user gets to signup page
+    When user signs up with same credentials
+    Then user will not see login page
+
+  Scenario: user signs up with used email
+    Given user is at signup page
+    When user types already used email
+    Then login page not shown
+
+  Scenario: user signs up with used username
+    Given signup page renders
+    When user types already used username
+    Then login page not rendered
