@@ -15,6 +15,9 @@ public class NavigateSteps {
 
     @Then("Page changes to {word} page")
     public void pageChangesTo(String page) {
-        Assert.assertEquals(URL.getUrlByName(page), StateContainer.getCurrentUrl());
+        String expectedUrl = URL.getUrlByName(page);
+        StateContainer.waitForUrl(expectedUrl);
+        String actualUrl = StateContainer.getCurrentUrl();
+        Assert.assertTrue(actualUrl.equals(expectedUrl) || actualUrl.equals(expectedUrl + "/"));
     }
 }

@@ -1,11 +1,13 @@
 package llkjhgfdsa.step_definitions;
 
-import io.cucumber.java.AfterAll;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import llkjhgfdsa.StateContainer;
 import llkjhgfdsa.URL;
 import org.junit.Assert;
+
+import java.util.Map;
 
 public class LoginSteps {
     @When("We click signup button")
@@ -14,13 +16,20 @@ public class LoginSteps {
     }
 
     @When("The user enters valid credentials")
-    public void enterValidCredentials() {
-        StateContainer.getLoginPage().login("asd", "password");
+    public void enterValidCredentials(DataTable dataTable) {
+
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        String username = data.get("username");
+        String password = data.get("password");
+        StateContainer.getLoginPage().login(username, password);
     }
 
     @When("The user enters invalid credentials")
-    public void enterInvalidCredentials() {
-        StateContainer.getLoginPage().login("invalidUsername", "invalidPassword");
+    public void enterInvalidCredentials(DataTable dataTable) {
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        String username = data.get("username");
+        String password = data.get("password");
+        StateContainer.getLoginPage().login(username, password);
     }
 
     @When("The user leaves username or password field empty")
@@ -37,13 +46,5 @@ public class LoginSteps {
     @Then("The page shows a popup")
     public void pageShowsPopup() {
         Assert.assertTrue("An alert should pop up when user tries to log in with invalid credentials.", StateContainer.isAlertPresent());
-    }
-
-    @Then("The page navigates to the main page")
-    public void navigatesToMainPage() {
-        String expected = URL.MAIN.getUrl();
-        StateContainer.waitForUrl(expected);
-        String actual = StateContainer.getCurrentUrl();
-        Assert.assertEquals(expected, actual);
     }
 }

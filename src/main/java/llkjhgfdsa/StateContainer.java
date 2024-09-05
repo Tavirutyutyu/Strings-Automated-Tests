@@ -64,7 +64,10 @@ public class StateContainer {
 
     public static void waitForUrl(String url) {
         wait = getWait();
-        wait.until(ExpectedConditions.urlToBe(url));
+        wait.until(ExpectedConditions.or(
+            ExpectedConditions.urlToBe(url),
+            ExpectedConditions.urlToBe(url+"/")
+        ));
     }
 
     public static void get(String url) {
