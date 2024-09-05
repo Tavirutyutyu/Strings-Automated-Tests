@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -45,6 +46,22 @@ public class MainPage extends PageTemplate implements DarkModePage {
             System.out.println("Post not found");
         }
     }
+    public void likePicturePost(String postDescription) {
+        WebElement post = findPost(postDescription);
+        Actions actions = new Actions(driver);
+        if (post != null) {
+            WebElement picture = post.findElement(By.xpath("//*[@class='picture']"));
+            String src = picture.getAttribute("src");
+            if(src != null && !src.isEmpty()) {
+                actions.doubleClick(picture).perform();
+            } else {
+                System.out.println("Picture not uploaded for the post");
+            }
+        } else {
+            System.out.println("Post not found");
+        }
+    }
+
     public boolean isPostLiked(String postDescription) {
         WebElement post = findPost(postDescription);
         if (post != null) {
