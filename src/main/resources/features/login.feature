@@ -4,8 +4,8 @@ Feature: login
     Given We are on the login page
     When The user enters valid credentials
       | username | asd   |
-      | password | 12345 |
-    Then The page navigates to the main page
+      | password | password |
+    Then Page changes to main page
 
   Scenario: the user can not log in with invalid credentials
     Given We are on the login page

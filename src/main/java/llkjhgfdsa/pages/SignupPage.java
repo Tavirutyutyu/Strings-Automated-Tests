@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignupPage {
-    WebDriver driver;
+public class SignupPage extends PageTemplate{
 
     @FindBy(id = "firstName")
     private WebElement firstName;
@@ -23,9 +23,7 @@ public class SignupPage {
     @FindBy(id = "password")
     private WebElement password;
 
-    public SignupPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-
+    public SignupPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 }

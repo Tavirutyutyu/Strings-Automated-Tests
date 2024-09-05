@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends PageTemplate {
     @FindBy(id = "username")
@@ -15,8 +16,8 @@ public class LoginPage extends PageTemplate {
     @FindBy(xpath = "//a[contains(text(), 'Sign up now')]")
     private WebElement signUpBtn;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void goToSignUp() {
