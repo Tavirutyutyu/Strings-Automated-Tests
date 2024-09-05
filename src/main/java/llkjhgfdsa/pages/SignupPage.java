@@ -3,6 +3,7 @@ package llkjhgfdsa.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignupPage extends PageTemplate {
 
@@ -24,8 +25,8 @@ public class SignupPage extends PageTemplate {
     @FindBy(className = "formBtn")
     private WebElement submit;
 
-    public SignupPage(WebDriver driver) {
-        super(driver);
+    public SignupPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void signUp(String firstName, String lastName, String email, String username, String password) {

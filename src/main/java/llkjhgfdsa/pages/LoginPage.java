@@ -1,10 +1,12 @@
 package llkjhgfdsa.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends PageTemplate{
+public class LoginPage extends PageTemplate {
     @FindBy(id = "username")
     private WebElement username;
     @FindBy(id = "password")
@@ -14,16 +16,28 @@ public class LoginPage extends PageTemplate{
     @FindBy(xpath = "//a[contains(text(), 'Sign up now')]")
     private WebElement signUpBtn;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
-    public void goToSignUp(){
+    public void goToSignUp() {
         signUpBtn.click();
     }
-    public void login(String username, String password){
+
+    public void login(String username, String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         this.loginButton.click();
+    }
+
+    public boolean isFieldInFocus(String fieldName) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        WebElement element = (WebElement) executor.executeScript("return document.activeElement;");
+        if (fieldName.equals("username")) {
+            return element.equals(this.username);
+        } else if (fieldName.equals("password")) {
+            return element.equals(this.password);
+        }
+        return false;
     }
 }
