@@ -2,6 +2,7 @@ package llkjhgfdsa;
 
 import llkjhgfdsa.pages.LoginPage;
 import llkjhgfdsa.pages.MainPage;
+import llkjhgfdsa.pages.PostCreationPage;
 import llkjhgfdsa.pages.SignupPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -83,6 +84,9 @@ public class StateContainer {
             mainPage = new MainPage(getDriver(), getWait());
         }
         return mainPage;
+    }
+    public static PostCreationPage getPostCreationPage(){
+        return new PostCreationPage(getDriver(), getWait());
     }
 
     public static SignupPage getSignupPage() {
