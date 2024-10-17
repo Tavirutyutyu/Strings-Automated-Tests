@@ -4,10 +4,11 @@ public enum URL {
     MAIN("http://localhost:5173"),
     LOGIN("http://localhost:5173/login"),
     SIGNUP("http://localhost:5173/signup"),
+    CREATE("http://localhost:5173/posts/create"),
     ADMIN("http://localhost:5173/admin-dashboard");
     private final String url;
 
-    private URL(String url) {
+    URL(String url) {
         this.url = url;
     }
 

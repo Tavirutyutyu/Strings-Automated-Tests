@@ -3,9 +3,11 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.zh_tw.但是;
 import stringsAutomatedTests.StateContainer;
 import stringsAutomatedTests.URL;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MakePostSteps {
@@ -18,6 +20,12 @@ public class MakePostSteps {
     @Then("The post {string} appears on the feed")
     public void thePostAppearsOnTheFeed(String text) {
         assertTrue(StateContainer.getMainPage().isPostInFeed(text));
+    }
+
+    @Then("The site stays on post creation page")
+    public void theSiteStaysOnPostCreationPage() {
+        String url = StateContainer.getCurrentUrl();
+        assertEquals(URL.CREATE.getUrl(), url);
     }
 
     @After
