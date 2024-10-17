@@ -1,10 +1,10 @@
-package llkjhgfdsa.step_definitions;
+package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import llkjhgfdsa.StateContainer;
-import llkjhgfdsa.URL;
+import stringsAutomatedTests.StateContainer;
+import stringsAutomatedTests.URL;
 import org.junit.Assert;
 
 public class SignUpSteps {

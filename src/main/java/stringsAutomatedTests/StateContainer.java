@@ -1,9 +1,6 @@
-package llkjhgfdsa;
+package stringsAutomatedTests;
 
-import llkjhgfdsa.pages.LoginPage;
-import llkjhgfdsa.pages.MainPage;
-import llkjhgfdsa.pages.PostCreationPage;
-import llkjhgfdsa.pages.SignupPage;
+import stringsAutomatedTests.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +22,7 @@ public class StateContainer {
     private static MainPage mainPage;
     private static SignupPage signupPage;
     private static LoginPage loginPage;
+    private static AdminPage adminPage;
 
     private static ChromeDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
@@ -61,6 +59,7 @@ public class StateContainer {
         mainPage = null;
         signupPage = null;
         loginPage = null;
+        adminPage = null;
     }
 
     public static void waitForUrl(String url) {
@@ -103,6 +102,12 @@ public class StateContainer {
         return loginPage;
     }
 
+    public static AdminPage getAdminPage() {
+        if (adminPage == null) {
+            adminPage = new AdminPage(getDriver(), getWait());
+        }
+        return adminPage;
+    }
 
     public static boolean isAlertPresent() {
         try{

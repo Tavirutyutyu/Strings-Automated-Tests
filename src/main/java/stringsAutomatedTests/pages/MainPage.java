@@ -1,4 +1,4 @@
-package llkjhgfdsa.pages;
+package stringsAutomatedTests.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,7 +20,7 @@ public class MainPage extends PageTemplate implements DarkModePage {
     @FindBy(xpath = "//span[contains(text(), 'Create new Post')]")
     private WebElement createPostButton;
 
-    @FindBy(tagName = "section")
+    @FindBy(xpath = "//section[div[contains(@class, 'onePost')] and img[contains(@class, 'cloud')]]")
     private List<WebElement> sectionList;
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
@@ -46,13 +46,14 @@ public class MainPage extends PageTemplate implements DarkModePage {
             System.out.println("Post not found");
         }
     }
+
     public void likePicturePost(String postDescription) {
         WebElement post = findPost(postDescription);
         Actions actions = new Actions(driver);
         if (post != null) {
             WebElement picture = post.findElement(By.xpath("//*[@class='picture']"));
             String src = picture.getAttribute("src");
-            if(src != null && !src.isEmpty()) {
+            if (src != null && !src.isEmpty()) {
                 actions.doubleClick(picture).perform();
             } else {
                 System.out.println("Picture not uploaded for the post");
@@ -74,6 +75,11 @@ public class MainPage extends PageTemplate implements DarkModePage {
         }
     }
 
+    public boolean isPostInFeed(String postDescription) {
+        WebElement post = findPost(postDescription);
+        return post != null;
+    }
+
     public void clickCreatePostButton() {
         createPostButton.click();
     }
@@ -91,5 +97,29 @@ public class MainPage extends PageTemplate implements DarkModePage {
             }
         }
         return null;
+    }
+
+    public void reportAllPosts(){
+        for (WebElement post : sectionList) {
+            WebElement titleElement = post.findElement(By.xpath("//p[not(@*)]"));
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            String postTitle = (String) js.executeScript(
+                    "return arguments[0].childNodes[1].nodeValue.trim();", titleElement
+            );
+            reportPost(postTitle);
+        }
+    }
+
+    public void reportPost(String postDescription) {
+        WebElement post = findPost(postDescription);
+        if (post != null) {
+            WebElement threeDot = post.findElement(By.xpath("//button[@class='threeDot']"));
+            threeDot.click();
+            WebElement reportButton = driver.findElement(By.xpath("//button[@class='reportButton']"));
+            reportButton.click();
+            WebElement reportText = post.findElement(By.xpath("//*[@class='reportReasonsBtn' and text()='Drugs']"));
+            reportText.click();
+        }
     }
 }

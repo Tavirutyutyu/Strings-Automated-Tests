@@ -1,8 +1,8 @@
-package llkjhgfdsa.step_definitions;
+package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.en.Given;
-import llkjhgfdsa.StateContainer;
-import llkjhgfdsa.URL;
+import stringsAutomatedTests.StateContainer;
+import stringsAutomatedTests.URL;
 
 public class CredentialSteps {
     @Given("We are logged in with {string} : {string} credentials")

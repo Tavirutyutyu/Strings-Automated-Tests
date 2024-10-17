@@ -1,7 +1,7 @@
-package llkjhgfdsa.step_definitions;
+package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.AfterAll;
-import llkjhgfdsa.StateContainer;
+import stringsAutomatedTests.StateContainer;
 
 public class TeardownStep {
 

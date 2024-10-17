@@ -1,18 +1,16 @@
-package llkjhgfdsa;
-
-import llkjhgfdsa.pages.LoginPage;
-import llkjhgfdsa.pages.MainPage;
-import llkjhgfdsa.pages.PageTemplate;
-import llkjhgfdsa.pages.SignupPage;
+package stringsAutomatedTests;
 
 public enum URL {
-    MAIN( "http://localhost:5173"),
-    LOGIN( "http://localhost:5173/login"),
-    SIGNUP( "http://localhost:5173/signup");
+    MAIN("http://localhost:5173"),
+    LOGIN("http://localhost:5173/login"),
+    SIGNUP("http://localhost:5173/signup"),
+    ADMIN("http://localhost:5173/admin-dashboard");
     private final String url;
+
     private URL(String url) {
         this.url = url;
     }
+
     public String getUrl() {
         return url;
     }

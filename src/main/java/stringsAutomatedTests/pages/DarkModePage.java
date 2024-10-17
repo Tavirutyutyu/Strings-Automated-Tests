@@ -1,4 +1,4 @@
-package llkjhgfdsa.pages;
+package stringsAutomatedTests.pages;
 
 public interface DarkModePage {
     void clickDarkModeButton();

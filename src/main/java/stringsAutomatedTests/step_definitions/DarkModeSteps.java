@@ -1,9 +1,9 @@
-package llkjhgfdsa.step_definitions;
+package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import llkjhgfdsa.StateContainer;
+import stringsAutomatedTests.StateContainer;
 import org.junit.Assert;
 
 public class DarkModeSteps {
