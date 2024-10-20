@@ -1,9 +1,9 @@
 package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.zh_tw.但是;
 import stringsAutomatedTests.StateContainer;
 import stringsAutomatedTests.URL;
 
@@ -28,7 +28,7 @@ public class MakePostSteps {
         assertEquals(URL.CREATE.getUrl(), url);
     }
 
-    @After
+    @After("@DeletePost")
     public void tearDown() {
         StateContainer.getMainPage().reportAllPosts();
         StateContainer.get(String.valueOf(URL.ADMIN.getUrl()));
