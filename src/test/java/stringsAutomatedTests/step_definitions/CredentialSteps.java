@@ -1,6 +1,8 @@
 package stringsAutomatedTests.step_definitions;
 
 import io.cucumber.java.en.Given;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
 import stringsAutomatedTests.URL;
 
@@ -9,6 +11,6 @@ public class CredentialSteps {
     public void loginAs(String username, String password) {
         StateContainer.get(URL.LOGIN.getUrl());
         StateContainer.getLoginPage().login(username, password);
-        StateContainer.waitForUrl(URL.MAIN.getUrl()+"/");
+        StateContainer.waitForUrl(URL.MAIN.getUrl());
     }
 }

@@ -3,10 +3,13 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
-import org.junit.Assert;
 
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginSteps {
     @When("We click signup button")
@@ -39,11 +42,11 @@ public class LoginSteps {
     @Then("The site puts cursor in first empty input field")
     public void cursorInFirstEmptyInputField() {
         String message = "When the user leaves empty an input field and try to submit, the site throw the cursor into the first empty input field.";
-        Assert.assertTrue(message, StateContainer.getLoginPage().isFieldInFocus("username"));
+        assertTrue(StateContainer.getLoginPage().isFieldInFocus("username"), message);
     }
 
     @Then("The page shows a popup")
     public void pageShowsPopup() {
-        Assert.assertTrue("An alert should pop up when user tries to log in with invalid credentials.", StateContainer.isAlertPresent());
+        assertTrue(StateContainer.isAlertPresent(), "An alert should pop up when user tries to log in with invalid credentials.");
     }
 }

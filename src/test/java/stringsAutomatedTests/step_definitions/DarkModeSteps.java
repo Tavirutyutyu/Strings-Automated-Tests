@@ -3,8 +3,12 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
-import org.junit.Assert;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DarkModeSteps {
     @Given("We are in dark mode")
@@ -23,11 +27,11 @@ public class DarkModeSteps {
 
     @Then("Page changes to dark mode")
     public void verifyDarkMode() {
-        Assert.assertTrue(StateContainer.getMainPage().isDark());
+        assertTrue(StateContainer.getMainPage().isDark());
     }
 
     @Then("Page changes to light mode")
     public void verifyLightMode() {
-        Assert.assertFalse(StateContainer.getMainPage().isDark());
+        assertFalse(StateContainer.getMainPage().isDark());
     }
 }

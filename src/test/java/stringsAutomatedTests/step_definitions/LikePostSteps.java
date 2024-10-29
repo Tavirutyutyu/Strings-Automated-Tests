@@ -3,8 +3,12 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
-import org.junit.Assert;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LikePostSteps {
     @Given("A post {string} is made")
@@ -29,10 +33,10 @@ public class LikePostSteps {
 
     @Then("The hearth icon becomes red at post {string}")
     public void the_hearth_icon_becomes_red(String post) {
-        Assert.assertTrue(StateContainer.getMainPage().isPostLiked(post));
+        assertTrue(StateContainer.getMainPage().isPostLiked(post));
     }
     @Then("The hearth icon becomes white at post {string}")
     public void the_hearth_icon_becomes_white(String post) {
-        Assert.assertFalse(StateContainer.getMainPage().isPostLiked(post));
+        assertFalse(StateContainer.getMainPage().isPostLiked(post));
     }
 }

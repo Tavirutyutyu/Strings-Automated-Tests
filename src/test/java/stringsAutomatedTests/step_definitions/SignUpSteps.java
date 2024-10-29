@@ -3,9 +3,13 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
 import stringsAutomatedTests.URL;
-import org.junit.Assert;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SignUpSteps {
 
@@ -37,7 +41,7 @@ public class SignUpSteps {
     @Then("user sees login page")
     public void user_sees_login_page() {
         StateContainer.waitForUrl(URL.LOGIN.getUrl());
-        Assert.assertEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
 
@@ -60,7 +64,7 @@ public class SignUpSteps {
 
     @Then("User can not see login page")
     public void user_can_not_see_login_page() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
     @Given("email field filled without dot")
@@ -82,7 +86,7 @@ public class SignUpSteps {
 
     @Then("User can not reach login page")
     public void user_can_not_reach_login_page() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
     @Given("user is on the sign up page no fields filled")
@@ -104,7 +108,7 @@ public class SignUpSteps {
 
     @Then("user not forwarded to login page")
     public void user_not_forwarded_to_login_page() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
 
@@ -127,7 +131,7 @@ public class SignUpSteps {
 
     @Then("user will not see login page")
     public void user_will_not_see_login_page() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
 
@@ -151,7 +155,7 @@ public class SignUpSteps {
 
     @Then("login page not shown")
     public void login_page_not_shown() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
 
     @Given("signup page renders")
@@ -175,10 +179,6 @@ public class SignUpSteps {
 
     @Then("login page not rendered")
     public void login_page_not_rendered() {
-        Assert.assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
+        assertNotEquals(URL.LOGIN.getUrl(), StateContainer.getCurrentUrl());
     }
-
-
-
-
 }

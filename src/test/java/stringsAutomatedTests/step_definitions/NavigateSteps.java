@@ -3,9 +3,12 @@ package stringsAutomatedTests.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import stringsAutomatedTests.StateContainer;
 import stringsAutomatedTests.URL;
-import org.junit.Assert;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NavigateSteps {
     @Given("We are on the {word} page")
@@ -19,7 +22,7 @@ public class NavigateSteps {
         String expectedUrl = URL.getUrlByName(page);
         StateContainer.waitForUrl(expectedUrl);
         String actualUrl = StateContainer.getCurrentUrl();
-        Assert.assertTrue(actualUrl.equals(expectedUrl) || actualUrl.equals(expectedUrl + "/"));
+        assertTrue(actualUrl.equals(expectedUrl) || actualUrl.equals(expectedUrl + "/"));
     }
 
     @When("We refresh the page")
